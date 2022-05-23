@@ -67,5 +67,8 @@ public class Grid
         }
     }
 
-
+    internal float GetCostOfEnteringCell(Point pos)
+    {
+        return 1;
+    }
 }

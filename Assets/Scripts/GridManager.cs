@@ -132,7 +132,7 @@ public class GridManager : MonoBehaviour
     /// <summary>
     /// Casillas vecinas y validas a una posicion dada
     /// </summary>
-    private List<CellType> getNeightbourTypes(Vector3Int pos)
+    public List<CellType> getNeightbourTypes(Vector3Int pos)
     {
         List<CellType> adyacents = new List<CellType>();
         foreach (Vector3Int p in Grid.neightbours)
@@ -149,7 +149,7 @@ public class GridManager : MonoBehaviour
     /// <summary>
     /// Posiciones de casillas vecinas y validas a una posicion dada
     /// </summary>
-    private List<Vector3Int> getNeightbourPos(Vector3Int pos)
+    public List<Vector3Int> getNeightbourPos(Vector3Int pos)
     {
         List<Vector3Int> adyacents = new List<Vector3Int>();
         foreach (Vector3Int p in Grid.neightbours)
