@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private int width = 15, height = 15;
     [SerializeField]
-    GameObject deadEnd, road, curve, way3, way4;
+    GameObject deadEnd, road, curve, way3, way4, house;
 
     public bool isValidPos(Vector3Int pos)
     {
@@ -36,7 +36,7 @@ public class GridManager : MonoBehaviour
         {
             if (grid[p.x, p.z] != CellType.Road) continue; //si no hay una carretera en la casilla, no tenemos nada que "arreglar"
             grid[p.x, p.z] = CellType.Empty;
-            checkNeighboursAndPlace(p);
+            checkNeighboursAndPlaceRoad(p);
         }
     }
 
@@ -64,7 +64,21 @@ public class GridManager : MonoBehaviour
         gameObjectGrid.Add(cellPos, structure);
     }
 
-    public void checkNeighboursAndPlace(Vector3Int pos)
+    public void placeHouse(Vector3Int pos)
+    {
+        if (!isValidPos(pos) || !isFreePos(pos)) return;
+
+        int count = getNeightbourTypes(pos).Where(x => x == CellType.Road).Count();
+        if(count <= 0)
+        {
+            Debug.Log("No hay una carretera cerca");
+            return;
+        }
+
+        placeOnCell(pos, house, CellType.House, Quaternion.Euler(0, 180, 0));
+    }
+
+    public void checkNeighboursAndPlaceRoad(Vector3Int pos)
     {
         if (!isValidPos(pos) || !isFreePos(pos)) return;
 

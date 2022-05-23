@@ -10,8 +10,7 @@ public enum CellType
 {
     Empty, // aun sin establecer. Al ser 0 es el valor de inicialización por defecto.
     Road,
-    Structure,
-    SpecialStructure,
+    House,
     None  // para usar en comparaciones
 }
 
@@ -29,7 +28,7 @@ public class Grid
 
     //Metodos
     private List<Point> roadList = new List<Point>();
-    private List<Point> specialStructure = new List<Point>();
+    private List<Point> houseList = new List<Point>();
     public Grid(int width, int height)
     {
         this.width = width;
@@ -56,13 +55,13 @@ public class Grid
             {
                 roadList.Remove(new Point(i, j));
             }
-            if (value == CellType.SpecialStructure)
+            if (value == CellType.House)
             {
-                specialStructure.Add(new Point(i, j));
+                houseList.Add(new Point(i, j));
             }
             else
             {
-                specialStructure.Remove(new Point(i, j));
+                houseList.Remove(new Point(i, j));
             }
             grid[i, j] = value;
         }

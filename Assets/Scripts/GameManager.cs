@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GridManager gridManager;
 
+    public UiManager uiManager;
+
     private void Start()
     {
         //suscribirse al metodo de hacer click
@@ -22,8 +24,16 @@ public class GameManager : MonoBehaviour
     private void HandleMouseClick(Vector3Int pos)
     {
         Debug.Log(pos);  //checkear que funcione
-        gridManager.checkNeighboursAndPlace(pos);
-        gridManager.correctNeightbours(pos);
+        if (uiManager.RoadSelected)
+        {
+            gridManager.checkNeighboursAndPlaceRoad(pos);
+            gridManager.correctNeightbours(pos);
+        }
+        else
+        {
+            gridManager.placeHouse(pos);
+        }
+        
     }
 
     private void Update()
