@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     {
         //suscribirse al metodo de hacer click
         inputManager.OnMouseClick += HandleMouseClick;
+        //inputManager.OnMouseHold += HandleMouseClick;
+        //inputManager.OnMouseUp += endPlacing;
     }
 
     private void HandleMouseClick(Vector3Int pos)
