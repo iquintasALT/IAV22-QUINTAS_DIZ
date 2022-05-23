@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private void HandleMouseClick(Vector3Int pos)
     {
         Debug.Log(pos);  //checkear que funcione
-        gridManager.placeRoad(pos);
+        gridManager.checkNeighboursAndPlace(pos);
     }
 
     private void Update()

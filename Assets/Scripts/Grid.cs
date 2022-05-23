@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Clase que representa el tablero.
@@ -22,6 +23,8 @@ public class Grid
     private int height;
     public int Width { get { return width; } }
     public int Height { get { return height; } }
+
+    public static Vector3Int[] neightbours = { new Vector3Int(-1, 0, 0), new Vector3Int(0, 0, 1), new Vector3Int(1, 0, 0), new Vector3Int(0, 0, -1) };
 
     //Metodos
     private List<Point> roadList = new List<Point>();
