@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerGround))
 		{
-			Vector3Int pos = Vector3Int.RoundToInt(hit.point); // enteros para que coincida con el Grid de Point
+			Vector3Int pos = new Vector3Int((int)hit.point.x, 0, (int)hit.point.z);
 			return pos;
 		}
 		return null;
