@@ -9,15 +9,18 @@ public class GameManager : MonoBehaviour
 
     public InputManager inputManager;
 
+    public GridManager gridManager;
+
     private void Start()
     {
         //suscribirse al metodo de hacer click
         inputManager.OnMouseClick += HandleMouseClick;
     }
 
-    private void HandleMouseClick(Vector3Int position)
+    private void HandleMouseClick(Vector3Int pos)
     {
-        Debug.Log(position);  //checkear que funcione
+        Debug.Log(pos);  //checkear que funcione
+        gridManager.placeRoad(pos);
     }
 
     private void Update()
