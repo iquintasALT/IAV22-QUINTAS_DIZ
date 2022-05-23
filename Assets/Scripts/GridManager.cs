@@ -107,7 +107,7 @@ public class GridManager : MonoBehaviour
         else if (count == 3)
         {
             int noRoadIndex = adyacents.FindIndex(x => x != CellType.Road);
-            placeOnCell(pos, way3, CellType.Road, Quaternion.Euler(-90, 0, 0));
+            placeOnCell(pos, way3, CellType.Road, Quaternion.Euler(-90, noRoadIndex * 90, 0));
         }
         else placeOnCell(pos, way4, CellType.Road, Quaternion.Euler(-90, 0, 0));
 
