@@ -24,6 +24,7 @@ public class Grid
     public int Width { get { return width; } }
     public int Height { get { return height; } }
 
+    //izquierda, arriba, derecha, abajo
     public static Vector3Int[] neightbours = { new Vector3Int(-1, 0, 0), new Vector3Int(0, 0, 1), new Vector3Int(1, 0, 0), new Vector3Int(0, 0, -1) };
 
     //Metodos

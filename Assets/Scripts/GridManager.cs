@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
     /// <summary>
     /// factoria de objetos que van a ocupar las celdas
     /// </summary>
-    private void placeOnCell(Vector3Int pos, GameObject prefab, CellType type)
+    private void placeOnCell(Vector3Int pos, GameObject prefab, CellType type, Quaternion rotation)
     {
         grid[pos.x, pos.z] = type;
         Vector3 centered = new Vector3(0.5f, 0.01f, 0.5f);
@@ -39,6 +39,7 @@ public class GridManager : MonoBehaviour
         structure.transform.SetParent(transform);
         structure.transform.localPosition = pos + centered;
         //TODO rotacion segun vecinos
+        structure.transform.localRotation = rotation;
     }
 
     public void checkNeighboursAndPlace(Vector3Int pos)
@@ -50,15 +51,43 @@ public class GridManager : MonoBehaviour
         //contamos cuantas carreteras hay alrededor de una posicion
         int count = adyacents.Where(x => x == CellType.Road).Count();
 
-        if (count == 0 || count == 1) placeOnCell(pos, deadEnd, CellType.Road);
+        if (count == 0)
+        {
+            placeOnCell(pos, deadEnd, CellType.Road, Quaternion.Euler(-90, 0, 0));
+        }
+        else if (count == 1)
+        {
+            int roadIndex = adyacents.FindIndex(x => x == CellType.Road);
+            int[] myArray = { 2, 3, 0, 1 };
+            placeOnCell(pos, deadEnd, CellType.Road, Quaternion.Euler(-90, myArray[roadIndex]*90, 0));
+        }
         else if (count == 2)
         {
-            if (adyacents[0] == CellType.Road && adyacents[2] == CellType.Road)
-                placeOnCell(pos, road, CellType.Road);
-            else placeOnCell(pos, curve, CellType.Road);
+            if ((adyacents[0] == CellType.Road && adyacents[2] == CellType.Road))
+                placeOnCell(pos, road, CellType.Road, Quaternion.Euler(-90, 0, 0));
+            else if (adyacents[1] == CellType.Road && adyacents[3] == CellType.Road)
+                placeOnCell(pos, road, CellType.Road, Quaternion.Euler(-90, 90, 0));
+            else
+            {
+                int rotation = 0;
+                if (adyacents[0] == CellType.Road)
+                    if (adyacents[1] == CellType.Road) rotation = 0;
+                    else rotation = 270;
+                else
+                {
+                    if (adyacents[1] == CellType.Road) rotation = 90;
+                    else rotation = 180;
+                }
+
+                placeOnCell(pos, curve, CellType.Road, Quaternion.Euler(-90, rotation, 0));
+            }
         }
-        else if(count == 3) placeOnCell(pos, way3, CellType.Road);
-        else placeOnCell(pos, way4, CellType.Road);
+        else if (count == 3)
+        {
+            int noRoadIndex = adyacents.FindIndex(x => x != CellType.Road);
+            placeOnCell(pos, way3, CellType.Road, Quaternion.Euler(-90, 0, 0));
+        }
+        else placeOnCell(pos, way4, CellType.Road, Quaternion.Euler(-90, 0, 0));
 
         //placeOnCell(pos, road, CellType.Road);
         //GameObject placingRoad = Instantiate(road, pos + centered, Quaternion.identity);
