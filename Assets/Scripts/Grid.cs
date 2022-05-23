@@ -71,4 +71,7 @@ public class Grid
     {
         return 1;
     }
+
+    public List<Point> getAllRoadPos() { return roadList; }
+    public List<Point> getAllHousePos() { return houseList; }
 }

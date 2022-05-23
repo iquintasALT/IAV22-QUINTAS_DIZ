@@ -14,7 +14,7 @@ public class GridSearch {
         public List<Point> Path { get; set; }
     }
 
-    public static List<Point> AStarSearch(Grid grid, GridManager gridManager, Point startPosition, Point endPosition)
+    public static List<Point> AStarSearch(GridManager gridManager, Point startPosition, Point endPosition)
     {
         List<Point> path = new List<Point>();
 
@@ -41,7 +41,7 @@ public class GridSearch {
             foreach (Vector3Int neighbourVec in gridManager.getNeightbourPos(new Vector3Int(current.X, 0, current.Y)))
             {
                 Point neighbour = new Point(neighbourVec.x, neighbourVec.z);
-                float newCost = costDictionary[current] + grid.GetCostOfEnteringCell(neighbour);
+                float newCost = costDictionary[current] + gridManager.grid.GetCostOfEnteringCell(neighbour);
                 if (!costDictionary.ContainsKey(neighbour) || newCost < costDictionary[neighbour])
                 {
                     costDictionary[neighbour] = newCost;

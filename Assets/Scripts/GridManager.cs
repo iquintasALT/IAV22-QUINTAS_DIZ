@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    private Grid grid;
+    public Grid grid;
     Dictionary<Vector2Int, GameObject> gameObjectGrid;
     [SerializeField]
     private int width = 15, height = 15;
@@ -159,6 +159,17 @@ public class GridManager : MonoBehaviour
         }
 
         return adyacents;
+    }
+
+    public List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int endPosition, bool isAgent = false)
+    {
+        var resultPath = GridSearch.AStarSearch(this, new Point(startPosition.x, startPosition.z), new Point(endPosition.x, endPosition.z));
+        List<Vector3Int> path = new List<Vector3Int>();
+        foreach (Point point in resultPath)
+        {
+            path.Add(new Vector3Int(point.X, 0, point.Y));
+        }
+        return path;
     }
 
 }
