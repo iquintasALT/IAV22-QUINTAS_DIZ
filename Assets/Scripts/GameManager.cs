@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log(pos);  //checkear que funcione
         gridManager.checkNeighboursAndPlace(pos);
+        gridManager.correctNeightbours(pos);
     }
 
     private void Update()

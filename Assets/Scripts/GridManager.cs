@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     private Grid grid;
+    Dictionary<Vector2Int, GameObject> gameObjectGrid;
     [SerializeField]
     private int width = 15, height = 15;
     [SerializeField]
@@ -24,6 +26,18 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         grid = new Grid(width, height);
+        gameObjectGrid = new Dictionary<Vector2Int, GameObject>();
+    }
+
+    internal void correctNeightbours(Vector3Int pos)
+    {
+        List<Vector3Int> adyacents = getNeightbourPos(pos);
+        foreach (Vector3Int p in adyacents)
+        {
+            if (grid[p.x, p.z] != CellType.Road) continue; //si no hay una carretera en la casilla, no tenemos nada que "arreglar"
+            grid[p.x, p.z] = CellType.Empty;
+            checkNeighboursAndPlace(p);
+        }
     }
 
     /// <summary>
@@ -31,6 +45,14 @@ public class GridManager : MonoBehaviour
     /// </summary>
     private void placeOnCell(Vector3Int pos, GameObject prefab, CellType type, Quaternion rotation)
     {
+        Vector2Int cellPos = new Vector2Int(pos.x, pos.z);
+        //si ya habia algo en esta celda, lo borro
+        if (gameObjectGrid.ContainsKey(cellPos))
+        {
+            Destroy(gameObjectGrid[cellPos]);
+            gameObjectGrid.Remove(cellPos);
+        }
+
         grid[pos.x, pos.z] = type;
         Vector3 centered = new Vector3(0.5f, 0.01f, 0.5f);
 
@@ -38,8 +60,8 @@ public class GridManager : MonoBehaviour
         GameObject structure = Instantiate(prefab, transform);
         structure.transform.SetParent(transform);
         structure.transform.localPosition = pos + centered;
-        //TODO rotacion segun vecinos
         structure.transform.localRotation = rotation;
+        gameObjectGrid.Add(cellPos, structure);
     }
 
     public void checkNeighboursAndPlace(Vector3Int pos)
@@ -47,7 +69,7 @@ public class GridManager : MonoBehaviour
         if (!isValidPos(pos) || !isFreePos(pos)) return;
 
         //obtenemos vecinos
-        List<CellType> adyacents = getNeightbours(pos);
+        List<CellType> adyacents = getNeightbourTypes(pos);
         //contamos cuantas carreteras hay alrededor de una posicion
         int count = adyacents.Where(x => x == CellType.Road).Count();
 
@@ -96,7 +118,7 @@ public class GridManager : MonoBehaviour
     /// <summary>
     /// Casillas vecinas y validas a una posicion dada
     /// </summary>
-    private List<CellType> getNeightbours(Vector3Int pos)
+    private List<CellType> getNeightbourTypes(Vector3Int pos)
     {
         List<CellType> adyacents = new List<CellType>();
         foreach (Vector3Int p in Grid.neightbours)
@@ -109,5 +131,20 @@ public class GridManager : MonoBehaviour
 
         return adyacents;
     }
-    
+
+    /// <summary>
+    /// Posiciones de casillas vecinas y validas a una posicion dada
+    /// </summary>
+    private List<Vector3Int> getNeightbourPos(Vector3Int pos)
+    {
+        List<Vector3Int> adyacents = new List<Vector3Int>();
+        foreach (Vector3Int p in Grid.neightbours)
+        {
+            Vector3Int newP = p + pos;
+            if (isValidPos(newP)) adyacents.Add(new Vector3Int(newP.x,0, newP.z));
+        }
+
+        return adyacents;
+    }
+
 }
