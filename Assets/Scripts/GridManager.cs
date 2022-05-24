@@ -7,7 +7,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public Grid grid;
-    Dictionary<Vector2Int, GameObject> gameObjectGrid;
+    public Dictionary<Vector2Int, GameObject> gameObjectGrid;
     [SerializeField]
     private int width = 15, height = 15;
     [SerializeField]
@@ -170,6 +170,16 @@ public class GridManager : MonoBehaviour
             path.Add(new Vector3Int(point.X, 0, point.Y));
         }
         return path;
+    }
+
+    public GameObject GetStructureAt(Vector3Int position)
+    {
+        Vector2Int pos = new Vector2Int(position.x, position.z);
+        if (gameObjectGrid.ContainsKey(pos))
+        {
+            return gameObjectGrid[pos];
+        }
+        return null;
     }
 
 }
