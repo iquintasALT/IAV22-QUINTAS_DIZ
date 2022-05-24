@@ -83,7 +83,7 @@ A - Mostrar constructor de ciudad \
 B - Mostrar tamaño variable de mapa \
 C - Mostrar grafo en la escena \
 D - Mostrar peatones caminando \
-E - Funcionamiento con varias entidades y añadidos \
+E - Funcionamiento con varias entidades y añadidos
 ## Desarrollo
 Las clases más importantes son:
 - Para la construcción de la ciudad modular.... \
