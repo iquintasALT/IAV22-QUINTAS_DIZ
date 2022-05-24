@@ -79,11 +79,11 @@ De forma similar a la última práctica, creare un menú para facilitar ver los 
 # Como ha sido el desarrollo
 
 ## Puntos que se evalúan en el video
-A - Mostrar constructor de ciudad
-B - Mostrar tamaño variable de mapa
-C - Mostrar grafo en la escena
-D - Mostrar peatones caminando
-E - Funcionamiento con varias entidades y añadidos
+A - Mostrar constructor de ciudad \
+B - Mostrar tamaño variable de mapa \
+C - Mostrar grafo en la escena \
+D - Mostrar peatones caminando \
+E - Funcionamiento con varias entidades y añadidos \
 ## Desarrollo
 Las clases más importantes son:
 - Para la construcción de la ciudad modular.... \
