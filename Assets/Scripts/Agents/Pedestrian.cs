@@ -24,6 +24,11 @@ public class Pedestrian : MonoBehaviour
         path = _path;
         index = 1;
         moving = true;
+        if (path.Count < 2)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         endPosition = path[index];
 
         //animacion sencilla de caminar

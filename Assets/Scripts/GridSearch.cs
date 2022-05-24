@@ -30,6 +30,11 @@ public class GridSearch {
 
         while (positionsTocheck.Count > 0)
         {
+            if(gridManager.grid[positionsTocheck[0].X, positionsTocheck[0].Y] != CellType.Road)
+            {
+                positionsTocheck.RemoveAt(0);
+                continue;
+            }
             Point current = GetClosestVertex(positionsTocheck, priorityDictionary);
             positionsTocheck.Remove(current);
             if (current.Equals(endPosition))
@@ -41,6 +46,12 @@ public class GridSearch {
             foreach (Vector3Int neighbourVec in gridManager.getNeightbourPos(new Vector3Int(current.X, 0, current.Y)))
             {
                 Point neighbour = new Point(neighbourVec.x, neighbourVec.z);
+
+                if (gridManager.grid[neighbour.X, neighbour.Y] != CellType.Road)
+                {
+                    continue;
+                }
+
                 float newCost = costDictionary[current] + gridManager.grid.GetCostOfEnteringCell(neighbour);
                 if (!costDictionary.ContainsKey(neighbour) || newCost < costDictionary[neighbour])
                 {

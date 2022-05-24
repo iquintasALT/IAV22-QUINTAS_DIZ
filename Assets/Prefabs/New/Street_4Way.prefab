@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextRoadPoints:
-  - {fileID: 0}
   - {fileID: 3159168151426816389}
   - {fileID: 772840603158470987}
   open: 1

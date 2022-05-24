@@ -42,7 +42,7 @@ public class PedestrianManager : MonoBehaviour
         //gridManager.gameObjectGrid[new Vector2Int(startPosition.x, startPosition.z)].GetComponent<PointsHelp>().GetposPedestrianToSpwan(startPosition);
 
         var agent = Instantiate(pedestrianPrefab, startPosition, Quaternion.identity);
-        var path = gridManager.GetPathBetween(startPosition, endPosition, true);
+        var path = gridManager.GetPathBetween(startPosition, endPosition);
         if (path.Count > 0)
         {
             path.Reverse();

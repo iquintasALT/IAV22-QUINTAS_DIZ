@@ -161,7 +161,7 @@ public class GridManager : MonoBehaviour
         return adyacents;
     }
 
-    public List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int endPosition, bool isAgent = false)
+    public List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int endPosition)
     {
         var resultPath = GridSearch.AStarSearch(this, new Point(startPosition.x, startPosition.z), new Point(endPosition.x, endPosition.z));
         List<Vector3Int> path = new List<Vector3Int>();
