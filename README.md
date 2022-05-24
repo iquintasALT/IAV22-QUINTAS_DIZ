@@ -5,6 +5,11 @@
 
 # IAV22-QUINTAS_DIZ
 Trabajo final para la asignatura de IAV de la UCM.
+
+<p float="center">
+  <img src="Documentos/portada.png" />
+</p>
+
 ## Propuesta
 Mi propuesta es una de los ejemplos en la sección **[Adecuada/Excelente]**. Se trata de un simulador de coches y peatones navegando por una ciudad. Planeo utilizar las siguientes herramientas/algoritmos, aunque estos pueden cambiar a lo largo del desarrollo:
 
@@ -70,3 +75,44 @@ Cada casilla guarda información sobre la casilla anterior desde la que fue alca
 </p>
 
 De forma similar a la última práctica, creare un menú para facilitar ver los comportamientos de los vehículos o peatones. Haciendo clic sobre uno de ellos, se podrá ordenar a una entidad en específico una tarea de las mencionadas anteriormente.
+
+# Como ha sido el desarrollo
+
+## Puntos que se evalúan en el video
+A - Mostrar constructor de ciudad
+B - Mostrar tamaño variable de mapa
+C - Mostrar grafo en la escena
+D - Mostrar peatones caminando
+E - Funcionamiento con varias entidades y añadidos
+## Desarrollo
+Las clases más importantes son:
+- Para la construcción de la ciudad modular....
+-- Grid.cs => Representa internamente el grid de tipos de cada celda. Los tipos son Empty, Road y House.
+-- GridManager.cs => Inicializa el grid. Contiene además los gameObjects colocados. Se encarga de todo lo relacionado con colocar casillas: crear carreteras, corregir su orientación, modificar carreteras si se han añadido otras alrededor y colocar casas.
+-- GridSearch.cs => Contiene el algoritmo de A* adaptado a la practica.
+- Para la IA de los peatones...
+-- RoadPoint.cs => Puntos contenidos en los prefabs de carreteras para formar el grafo no dirigido.
+-- AdjacencyGraph.cs => Grafo de RoadPoints que utiliza una variación de A* utilizando elementos de la clase Vertex.cs	
+-- Pedestrian.cs => Clase que recorre una serie de puntos dados.
+-- PedestrianManager.cs => Crea el grafo para cada agente y lo muestra en la escena de Unity.
+
+
+
+
+
+
+
+
+
+
+
+## Problemas
+Me he visto bastante apurado de tiempo por tener problemas con la implementación básica de caminos, tanto de estructuras de carreteras como con el grafo de puntos recorrido por los peatones (utilizando A*). Es por ello que no me ha dado tiempo ha implementar vehículos como agentes que naveguen este grafo. Aunque la mayor parte del trabajo ya esta hecho, puesto que funcionarían igual que con los peatones, pero con una serie de puntos diferentes.
+
+Dado que el principal trabajo hecho en la practica es la navegación de los peatones, no he utilizado *Behaviour Tree* puesto que únicamente tendría una acción muy grande, lo que va un poco en contra de la idea de utilizar esta estructura.
+
+## Recursos
+-Carreteras modulares: https://quaternius.itch.io/lowpoly-modular-street
+-Animación peatones: https://www.mixamo.com/
+-Coches con IA de aprendizaje automático: https://www.youtube.com/watch?v=2X5m_nDBvS4
+*(Esto es algo que me pareció muy chulo pero que no está en la práctica porque en ese caso no tendría que hacer yo la IA :) . Lo adjunto por curiosidad.
