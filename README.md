@@ -87,14 +87,14 @@ E - Funcionamiento con varias entidades y añadidos
 ## Desarrollo
 Las clases más importantes son:
 - Para la construcción de la ciudad modular....
--- Grid.cs => Representa internamente el grid de tipos de cada celda. Los tipos son Empty, Road y House.
--- GridManager.cs => Inicializa el grid. Contiene además los gameObjects colocados. Se encarga de todo lo relacionado con colocar casillas: crear carreteras, corregir su orientación, modificar carreteras si se han añadido otras alrededor y colocar casas.
--- GridSearch.cs => Contiene el algoritmo de A* adaptado a la practica.
+-- Grid.cs => Representa internamente el grid de tipos de cada celda. Los tipos son Empty, Road y House. \
+-- GridManager.cs => Inicializa el grid. Contiene además los gameObjects colocados. Se encarga de todo lo relacionado con colocar casillas: crear carreteras, corregir su orientación, modificar carreteras si se han añadido otras alrededor y colocar casas. \
+-- GridSearch.cs => Contiene el algoritmo de A* adaptado a la practica. \
 - Para la IA de los peatones...
--- RoadPoint.cs => Puntos contenidos en los prefabs de carreteras para formar el grafo no dirigido.
--- AdjacencyGraph.cs => Grafo de RoadPoints que utiliza una variación de A* utilizando elementos de la clase Vertex.cs	
--- Pedestrian.cs => Clase que recorre una serie de puntos dados.
--- PedestrianManager.cs => Crea el grafo para cada agente y lo muestra en la escena de Unity.
+-- RoadPoint.cs => Puntos contenidos en los prefabs de carreteras para formar el grafo no dirigido. \
+-- AdjacencyGraph.cs => Grafo de RoadPoints que utiliza una variación de A* utilizando elementos de la clase Vertex.cs	 \
+-- Pedestrian.cs => Clase que recorre una serie de puntos dados. \
+-- PedestrianManager.cs => Crea el grafo para cada agente y lo muestra en la escena de Unity. \
 
 
 
@@ -112,7 +112,7 @@ Me he visto bastante apurado de tiempo por tener problemas con la implementació
 Dado que el principal trabajo hecho en la practica es la navegación de los peatones, no he utilizado *Behaviour Tree* puesto que únicamente tendría una acción muy grande, lo que va un poco en contra de la idea de utilizar esta estructura.
 
 ## Recursos
--- Carreteras modulares: https://quaternius.itch.io/lowpoly-modular-street
--- Animación peatones: https://www.mixamo.com/
--- Coches con IA de aprendizaje automático: https://www.youtube.com/watch?v=2X5m_nDBvS4 /
+-- Carreteras modulares: https://quaternius.itch.io/lowpoly-modular-street \
+-- Animación peatones: https://www.mixamo.com/ \
+-- Coches con IA de aprendizaje automático: https://www.youtube.com/watch?v=2X5m_nDBvS4 \
 *(Esto es algo que me pareció muy chulo pero que no está en la práctica porque en ese caso no tendría que hacer yo la IA :) . Lo adjunto por curiosidad.
