@@ -112,7 +112,7 @@ Me he visto bastante apurado de tiempo por tener problemas con la implementació
 Dado que el principal trabajo hecho en la practica es la navegación de los peatones, no he utilizado *Behaviour Tree* puesto que únicamente tendría una acción muy grande, lo que va un poco en contra de la idea de utilizar esta estructura.
 
 ## Recursos
--Carreteras modulares: https://quaternius.itch.io/lowpoly-modular-street
--Animación peatones: https://www.mixamo.com/
--Coches con IA de aprendizaje automático: https://www.youtube.com/watch?v=2X5m_nDBvS4
+-- Carreteras modulares: https://quaternius.itch.io/lowpoly-modular-street
+-- Animación peatones: https://www.mixamo.com/
+-- Coches con IA de aprendizaje automático: https://www.youtube.com/watch?v=2X5m_nDBvS4 /
 *(Esto es algo que me pareció muy chulo pero que no está en la práctica porque en ese caso no tendría que hacer yo la IA :) . Lo adjunto por curiosidad.
