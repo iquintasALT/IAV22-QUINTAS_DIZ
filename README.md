@@ -86,11 +86,11 @@ D - Mostrar peatones caminando
 E - Funcionamiento con varias entidades y añadidos
 ## Desarrollo
 Las clases más importantes son:
-- Para la construcción de la ciudad modular....
+- Para la construcción de la ciudad modular.... \
 -- Grid.cs => Representa internamente el grid de tipos de cada celda. Los tipos son Empty, Road y House. \
 -- GridManager.cs => Inicializa el grid. Contiene además los gameObjects colocados. Se encarga de todo lo relacionado con colocar casillas: crear carreteras, corregir su orientación, modificar carreteras si se han añadido otras alrededor y colocar casas. \
 -- GridSearch.cs => Contiene el algoritmo de A* adaptado a la practica. \
-- Para la IA de los peatones...
+- Para la IA de los peatones... \
 -- RoadPoint.cs => Puntos contenidos en los prefabs de carreteras para formar el grafo no dirigido. \
 -- AdjacencyGraph.cs => Grafo de RoadPoints que utiliza una variación de A* utilizando elementos de la clase Vertex.cs	 \
 -- Pedestrian.cs => Clase que recorre una serie de puntos dados. \
