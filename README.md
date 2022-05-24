@@ -96,15 +96,10 @@ Las clases más importantes son:
 -- Pedestrian.cs => Clase que recorre una serie de puntos dados. \
 -- PedestrianManager.cs => Crea el grafo para cada agente y lo muestra en la escena de Unity. \
 
-
-
-
-
-
-
-
-
-
+## Representación del grafo
+<p float="center">
+  <img src="Documentos/grafo.png" />
+</p>
 
 ## Problemas
 Me he visto bastante apurado de tiempo por tener problemas con la implementación básica de caminos, tanto de estructuras de carreteras como con el grafo de puntos recorrido por los peatones (utilizando A*). Es por ello que no me ha dado tiempo ha implementar vehículos como agentes que naveguen este grafo. Aunque la mayor parte del trabajo ya esta hecho, puesto que funcionarían igual que con los peatones, pero con una serie de puntos diferentes.
