@@ -41,14 +41,14 @@ public class PedestrianManager : MonoBehaviour
 
         //gridManager.gameObjectGrid[new Vector2Int(startPosition.x, startPosition.z)].GetComponent<PointsHelp>().GetposPedestrianToSpwan(startPosition);
 
-        var agent = Instantiate(pedestrianPrefab, startPosition, Quaternion.identity);
+        var agent = Instantiate(pedestrianPrefab, startMarkerPosition, Quaternion.identity);
         var path = gridManager.GetPathBetween(startPosition, endPosition);
         if (path.Count > 0)
         {
             path.Reverse();
             List<Vector3> agentPath = GetPedestrianPath(path, startMarkerPosition, endMarkerPosition);
             Pedestrian pedestrian = agent.GetComponent<Pedestrian>();
-            pedestrian.Initialize(new List<Vector3>(path.Select(x => (Vector3)x).ToList()));
+            pedestrian.Initialize(agentPath);
         }
     }
 
@@ -73,10 +73,6 @@ public class PedestrianManager : MonoBehaviour
         {
             var currentPosition = path[i];
             var roadGO = gridManager.GetStructureAt(currentPosition);
-            if(roadGO == null)
-            {
-                Debug.Log("AA");
-            }
             var RoadPointsList = roadGO.GetComponent<PointsHelp>().GetAllPedestrianRoadPoints();
             bool limitDistance = RoadPointsList.Count == 4;
             tempDictionary.Clear();
